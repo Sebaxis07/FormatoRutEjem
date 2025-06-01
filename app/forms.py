@@ -130,7 +130,6 @@ class RegistroForm(forms.ModelForm):
         rut = self.cleaned_data.get('rut')
         rut_limpio = validar_rut_chileno(rut)
         
-        # Verificar que el RUT no esté ya registrado
         if Persona.objects.filter(rut=rut_limpio).exists():
             raise forms.ValidationError("Este RUT ya está registrado.")
         
@@ -146,7 +145,6 @@ class RegistroForm(forms.ModelForm):
         return password_confirm
 
     def save(self, commit=True):
-        # Crear el usuario
         user = User.objects.create_user(
             username=self.cleaned_data['username'],
             password=self.cleaned_data['password'],
