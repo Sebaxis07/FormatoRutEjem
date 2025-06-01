@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Iniciar sesión{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <h2 class="mb-4 text-center">Iniciar sesión</h2>
+        <form method="post" class="card card-body shadow">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario o RUT</label>
+                <input type="text" name="username" class="form-control" placeholder="Ej: juan123 o 12345678-9" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Entrar</button>
+        </form>
+        
+        <div class="text-center mt-3">
+            <small class="text-muted">Puedes ingresar con tu nombre de usuario o RUT</small>
+        </div>
+    </div>
+</div>
+{% endblock %}
